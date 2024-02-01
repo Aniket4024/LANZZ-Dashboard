@@ -1,0 +1,41 @@
+.Collapse{
+    border: 0px;
+    box-shadow: none;
+
+    span{
+        
+        font-weight: 600;
+    }
+
+    svg{
+        font-size: 12px;
+    }
+}
+
+.Collapse:hover{
+    background-color: #6366F133;
+}
+
+.Menu{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+
+.ant-collapse-content-box{
+    background-color: #0F172A;
+    color: white;
+    /* border: 1px solid red; */
+    height: 230px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: -1px;
+}
+
+:where(.css-dev-only-do-not-override-1b0bdye).ant-collapse>.ant-collapse-item {
+    border-bottom: none;
+}

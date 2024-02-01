@@ -1,0 +1,44 @@
+.ant-timeline-item-tail{
+    background-color: #94A3B8;
+}
+
+.ant-timeline-item-head {
+    background-color: #94A3B8;
+    color: #94A3B8;
+}
+
+.ant-timeline-item-head-blue{
+    background-color:none;
+    color: #94A3B8;
+}
+
+.ant-timeline-item{
+    height: 40px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+.ant-timeline-item-content{
+    color: #94A3B8;
+    text-align: start;
+    /* background-color: red; */
+    /* width: 200%; */
+}
+
+
+:where(.css-dev-only-do-not-override-1b0bdye).ant-timeline .ant-timeline-item-head-blue {
+    background-color: #94A3B8;
+    color: #94A3B8;
+
+}
+
+:where(.css-dev-only-do-not-override-1b0bdye).ant-timeline .ant-timeline-item-head-blue {
+    border-color: transparent;
+    border: 0px;
+}
+
+:where(.css-dev-only-do-not-override-1b0bdye).ant-timeline{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}

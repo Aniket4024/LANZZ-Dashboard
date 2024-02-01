@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: end;
+  align-items: start;
+
+  ::-webkit-scrollbar {
+    display: none;
+}
 }
 
 .App-logo {
@@ -34,5 +41,12 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+@media screen and (max-width:800px) {
+  .App {
+    justify-content: center;
   }
 }

@@ -1,0 +1,20 @@
+#body{
+    width: 80.5%;
+    right: 0;
+    height: 775px;
+    /* background-color: red; */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    /* margin-left: 300px; */
+}
+
+@media screen and (max-width:800px) {
+    #body{
+        width: 100%;
+        height: auto;
+        overflow: auto;
+        margin-bottom: 50px;
+    }
+}

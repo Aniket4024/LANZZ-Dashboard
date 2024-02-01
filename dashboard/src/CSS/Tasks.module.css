@@ -1,0 +1,116 @@
+#Tasks{
+    height: 620px;
+    width: 95%;
+    margin:10px auto;
+    /* background-color: red; */
+    overflow: auto;
+    
+}
+
+
+
+#T1{
+    height: 60px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: fixed;
+
+
+    select{
+        /* padding: 3px 2px;
+         */
+        padding: 6px 15px;
+        width: 150px;
+         border-radius: 6px;
+         border: 2px solid #E2E8F0;
+         outline: 0px;
+         color: #6366F1;
+         font-weight: 600;
+         font-size: 12px;
+         cursor: pointer;
+ 
+         option{
+             color: black;
+             font-size: 12px;
+         }
+    }
+
+    button{
+        padding: 6px 15px;
+        border-radius: 10px;
+        border: 0px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        background-color: #6366F1;
+    }
+
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+}
+
+#T1>div>button{
+    padding: 6px 15px;
+    border-radius: 10px;
+    border: 2px solid #E2E8F0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #94A3B8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#T1>div>button:nth-child(1){
+    color:#6366F1;
+    background-color: #6365f157;
+    border: 2px solid #6366F1;
+}
+#T1>div>button:nth-child(2){
+    color:rgb(0, 183, 255);
+    background-color: rgb(0, 183, 255,0.33);
+    border: 2px solid  rgb(0, 183, 255);
+}
+#T1>div>button:nth-child(3){
+    color: rgb(255, 200, 0);
+    background-color: rgb(255, 255, 0,0.33);
+    border: 2px solid  rgb(255, 200, 0);
+}
+#T1>div>button:nth-child(4){
+    color: #22CC5E;
+    background-color: rgb(34, 204, 94, 0.33);
+    border: 2px solid  #22CC5E;
+}
+#T1>div>button:nth-child(5){
+    color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.33);
+    border: 2px solid  #EF4444;
+}
+
+
+#T2{
+    height: 540px;
+    width: 100%;
+    /* background-color: black; */
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+    row-gap: 30px;
+
+}
