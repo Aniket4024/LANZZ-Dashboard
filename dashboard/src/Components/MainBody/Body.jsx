@@ -24,7 +24,7 @@ const Body = () => {
     <div id={style.body}>
       <Navbar/>
       {
-        dashboardPhone ? <PhoneDash/> : tasks ? <Tasks/> :  <Tasks/>
+        dashboardPhone ? <PhoneDash/> : tasks ? <Tasks/> :  <PhoneDash/>
       }
       <Footer/>
     </div>
