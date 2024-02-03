@@ -3,6 +3,7 @@ import { Collapse } from 'antd';
 import "../../../CSS/Accordian.css"
 import TimeLine from './TimeLine';
 import { MdOutlineDashboard } from "react-icons/md";
+import { useSelector } from 'react-redux';
 
 
 const { Panel } = Collapse;
@@ -28,6 +29,13 @@ const items = [
 ]
 
 const Accordian = ({HandleClick}) => {
+
+  const {tasks,dashboardPhone} = useSelector((store)=>{
+    return {
+      tasks: store.DashboardReducer.tasks,
+      dashboardPhone: store.DashboardReducer.dashboardPhone
+    }
+  })
 
   
   const DashboardSwitch = useRef(null);

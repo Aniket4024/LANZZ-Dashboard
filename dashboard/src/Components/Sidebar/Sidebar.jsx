@@ -6,7 +6,7 @@ import { MdCalendarMonth, MdOutlineDesktopWindows, MdTask } from 'react-icons/md
 import { FaFacebookMessenger, FaSquarePhone } from "react-icons/fa6";
 import { IoCopy } from "react-icons/io5";
 import { useDispatch, useSelector } from 'react-redux'
-import { DashboardPhone, TasksState } from '../Redux/DashboardReducer/action'
+import { DashboardPhone, TasksState } from '../../Redux/DashboardReducer/action'
 
 
 

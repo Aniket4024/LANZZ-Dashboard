@@ -1,26 +1,159 @@
 import style from "../../CSS/TaskBox.module.css"
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import PopOver from "../Common/Ant Design/PopOver";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { CreateTask } from "../../Redux/TaskReducer/action";
 
 
-const TaskBox = () => {
+
+const TaskBox = ({id,title,description,date,time,status}) => {
+
+    const dispatch = useDispatch();
+
+    const [tempTitle,setTempTitle] = useState("")
+    const [tempDesc,setTempDesc] = useState("")
+
+
+    const {all,open,pending,completed,important} = useSelector((store)=>{
+        return {
+            all: store.TaskReducer.all,
+            open: store.TaskReducer.open,
+            pending: store.TaskReducer.pending,
+            completed: store.TaskReducer.completed,
+            important: store.TaskReducer.important,
+        }
+    })
+
+    
+    const OpenStyle = {
+        color:"rgb(0, 183, 255)",
+        backgroundColor:"rgb(0, 183, 255, 0.33)"
+    }
+    const PendingStyle = {
+        color:"rgb(255, 200, 0)",
+        backgroundColor:"rgb(255, 200, 0, 0.33)"
+    }
+    const CompletedStyle = {
+        color:"#22CC5E",
+        backgroundColor:"rgb(34, 204, 94, 0.33)"
+    }
+    const ImportantStyle = {
+        color:"#EF4444",
+        backgroundColor:"rgba(239, 68, 68, 0.33)"
+    }
+
+
+    const HandleTitle = (e)=>{
+        setTempTitle(e.target.value);
+    }
+    const EnterTitle = (e)=>{
+       if(e.keyCode===13){
+            all.map((i)=>{
+                if(i.id===id){
+                    dispatch(CreateTask({...i,title:tempTitle}))
+                }
+            })
+       }
+    }
+
+
+    const HandleDescription = (e)=>{
+        setTempDesc(e.target.value)
+    }
+    const EnterDescription = (e)=>{
+        if(e.keyCode===13){
+             all.map((i)=>{
+                 if(i.id===id){
+                     dispatch(CreateTask({...i,title:tempDesc}))
+                 }
+             })
+        }
+     }
+
+
+
+    useEffect(()=>{
+        setTempTitle(title)
+        setTempDesc(description)
+    },[])
+
   return (
     <div className={style.TaskBox}>
         <div>
             <div>
-                <h4>Lorem ipsum dolor, sit amet consectetur.</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quasi provident alias culpa velit eius?</p>
+                <textarea style={{
+                    fontSize:"15px",
+                    fontWeight:"700",
+                    fontFamily:"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+                    // width:"185px",
+                    maxWidth:"185px",
+                    minWidth:"185px",
+                    // height:"45px",
+                    maxHeight:"40px",
+                    minHeight:"40px",
+                    border:"0px",
+                    resize:"none",
+                    outline:"0",
+                    overflow:"hidden"
+                }} 
+                    type="text" 
+                    maxLength={45}
+                    spellcheck="false"
+                    value={tempTitle}
+                    onChange={(e)=>HandleTitle(e)}
+                    onKeyDown={(e)=>EnterTitle(e)}
+                />
+                <textarea style={{
+                    fontSize:"10px",
+                    fontWeight:"500",
+                    fontFamily:"system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+                    // width:"185px",
+                    maxWidth:"190px",
+                    minWidth:"193px",
+                    // height:"45px",
+                    maxHeight:"52px",
+                    minHeight:"52px",
+                    border:"0px",
+                    resize:"none",
+                    outline:"0",
+                    overflow:"hidden"
+                }} 
+                    type="text" 
+                    maxLength={150}
+                    spellcheck="false"
+                    value={tempDesc}
+                    onChange={(e)=>HandleDescription(e)}
+                    onKeyDown={(e)=>EnterDescription(e)}
+                />
             </div>
             <div className={style.dateTag}>
-                <h6>January 1, 2024 </h6> 
+                <h6>{date}</h6> 
                 <div></div> 
-                <h6>05:23 pm</h6>
+                <h6>{time} {Number(time.split(":")[0]) >= 12 ? "PM" : "AM"}</h6>
             </div>
         </div>
         <div>
-            <div>open</div>
+            <div style={
+                status==="open"?
+                OpenStyle:status==="pen."?
+                PendingStyle:status==="Done"?
+                CompletedStyle:status==="IMP"?
+                ImportantStyle:OpenStyle
+            }
+            >
+                {status}
+            </div>
+            <div>
+                <PopOver id={id}/>
+            </div>
         </div>
     </div>
   )
 }
 
 export default TaskBox;
+
+
+
 

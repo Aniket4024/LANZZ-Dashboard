@@ -1,0 +1,93 @@
+#ModalButn{
+    padding: 6px 15px;
+    border-radius: 10px;
+    border: 0px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: #6366F1;
+}
+.ant-modal-body{
+    margin: 25px 0px;
+    /* background-color: red; */
+
+    hr{
+        border: 0px;
+    }
+
+    h4{
+        margin: 0px 0px 2px 5px;
+        color: #94A3B8;
+    }
+    input{
+        height: 30px;
+        border-radius:6px;
+        outline: 0px;
+        border: 1px solid #94A3B8;
+        width: 80%;
+        padding: 0px 10px;
+    }
+    p{
+        margin: 2px 5px;
+        font-size: 10px;
+        text-align: start;
+        color: #94A3B8;
+    }
+
+    textarea{
+        height: 20px;
+        width: 80%;
+        border-radius:6px;
+        outline: 0px;
+        border: 1px solid #94A3B8;
+        max-width:80%;
+        min-width:80%;
+        max-height: 60px;
+        min-height: 20px;
+        padding: 5px 10px;
+    }
+}
+
+
+.ant-modal-body>h4:nth-child(6){
+    margin: -5px 0px 2px 5px;
+}
+.ant-modal-body>h4:nth-child(1){
+    margin: 50px 0px 2px 5px;
+}
+
+.ant-modal-body>p:nth-child(9){
+    margin: 0px 0px 2px 5px;
+}
+
+.ant-modal-body>div:last-child{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+    color: #94A3B8;
+}
+#CheckInpt{
+    height: 15px;
+    /* accent-color:rgb(99, 102, 241); */
+    accent-color: #6366F1;
+    width: 15px;
+    cursor: pointer;
+}
+
+.ant-btn-primary{
+    border-radius: 6px;
+    border: 0px;
+    font-size: 14px;
+    /* font-weight: 600; */
+    color: white;
+    background-color: #6366F1;
+}

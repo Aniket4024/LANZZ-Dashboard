@@ -1,0 +1,30 @@
+#content{
+    display: grid;
+    gap: 5px;
+
+    button{
+        padding: 3px 10px;
+        border-radius: 8px;
+        border: 2px solid;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
+
+
+#content>button:nth-child(1){
+    color:rgb(0, 183, 255);
+    background-color: rgb(0, 183, 255,0.33);
+}
+#content>button:nth-child(2){
+    color: rgb(255, 200, 0);
+    background-color: rgb(255, 255, 0,0.33);
+}
+#content>button:nth-child(3){
+    color: #22CC5E;
+    background-color: rgb(34, 204, 94, 0.33);
+}
+#content>button:nth-child(4){
+    color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.33);
+}
