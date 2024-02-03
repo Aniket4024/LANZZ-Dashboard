@@ -40,6 +40,8 @@ const ModalPop = () => {
     };
     const handleOk = (e) => {
 
+        
+
         setIsModalOpen(false);
 
         if(title.length===0){
@@ -70,6 +72,8 @@ const ModalPop = () => {
         setChecked(false)
 
     };
+
+    
     const handleCancel = () => {
         setIsModalOpen(false);
     };

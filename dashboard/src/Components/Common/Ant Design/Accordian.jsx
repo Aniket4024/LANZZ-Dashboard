@@ -51,7 +51,7 @@ const Accordian = ({HandleClick}) => {
   },[])
 
 
-  const onChange = (key) => {
+  const onChange1 = (key) => {
 
     if(key[0]==1){
       DashboardSwitch.current.style.backgroundColor="#6366F1"
@@ -72,7 +72,7 @@ const Accordian = ({HandleClick}) => {
   };
 
 
-  return <Collapse expandIconPosition='end' defaultActiveKey={['1']}  onChange={onChange} ref={DashboardSwitch} className="Collapse" >
+  return <Collapse expandIconPosition='end' defaultActiveKey={['1']}  onChange={onChange1} ref={DashboardSwitch} className="Collapse" >
       <Panel 
         header={header1}
         key="1"
