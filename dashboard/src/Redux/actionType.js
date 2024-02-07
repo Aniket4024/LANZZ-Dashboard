@@ -3,9 +3,7 @@ export const TASKS = "TASKS"
 export const DASHBOARD_PHONE = "DASHBOARD_PHONE"
 
 
-// Task
-export const ALL = "ALL"
-export const OPEN = "OPEN"
-export const PENDING = "PENDING"
-export const COMPLETED = "COMPLETED"
-export const IMPORTANT = "IMPORTANT"
+// Tasks
+export const GET_TASKS = "GET_TASKS"
+export const CREATE_TASK = "CREATE_TASK"
+export const UPDATE_TASK = "UPDATE_TASK"

@@ -3,7 +3,9 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import PopOver from "../Common/Ant Design/PopOver";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateTask } from "../../Redux/TaskReducer/action";
+import { updateTask } from "../../Redux/TaskReducer/action";
+import { IoTrashOutline } from "react-icons/io5";
+
 
 
 
@@ -14,18 +16,6 @@ const TaskBox = ({id,title,description,date,time,status}) => {
     const [tempTitle,setTempTitle] = useState("")
     const [tempDesc,setTempDesc] = useState("")
 
-
-    const {all,open,pending,completed,important} = useSelector((store)=>{
-        return {
-            all: store.TaskReducer.all,
-            open: store.TaskReducer.open,
-            pending: store.TaskReducer.pending,
-            completed: store.TaskReducer.completed,
-            important: store.TaskReducer.important,
-        }
-    })
-
-    
     const OpenStyle = {
         color:"rgb(0, 183, 255)",
         backgroundColor:"rgb(0, 183, 255, 0.33)"
@@ -48,13 +38,9 @@ const TaskBox = ({id,title,description,date,time,status}) => {
         setTempTitle(e.target.value);
     }
     const EnterTitle = (e)=>{
-       if(e.keyCode===13){
-            all.map((i)=>{
-                if(i.id===id){
-                    dispatch(CreateTask({...i,title:tempTitle}))
-                }
-            })
-       }
+    //    if(e.keyCode===13){
+    //         dispatch(updateTask({...e,title:tempTitle}));
+    //    }
     }
 
 
@@ -62,13 +48,7 @@ const TaskBox = ({id,title,description,date,time,status}) => {
         setTempDesc(e.target.value)
     }
     const EnterDescription = (e)=>{
-        if(e.keyCode===13){
-             all.map((i)=>{
-                 if(i.id===id){
-                     dispatch(CreateTask({...i,title:tempDesc}))
-                 }
-             })
-        }
+        
      }
 
 
@@ -130,7 +110,8 @@ const TaskBox = ({id,title,description,date,time,status}) => {
             <div className={style.dateTag}>
                 <h6>{date}</h6> 
                 <div></div> 
-                <h6>{time} {Number(time.split(":")[0]) >= 12 ? "PM" : "AM"}</h6>
+                <h6>{time} </h6>
+                {/* {Number(time.split(":")[0]) >= 12 ? "PM" : "AM"} */}
             </div>
         </div>
         <div>
@@ -145,7 +126,8 @@ const TaskBox = ({id,title,description,date,time,status}) => {
                 {status}
             </div>
             <div>
-                <PopOver id={id}/>
+                <IoTrashOutline style={{margin:"50px auto 0px 20px",color:"red"}}/>
+                <PopOver id={id} style={{margin:"0px auto 0px 20px"}}/>
             </div>
         </div>
     </div>

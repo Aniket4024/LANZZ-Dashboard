@@ -3,7 +3,6 @@ import { Button, Popover, ConfigProvider } from 'antd';
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import style from "../../../CSS/PopOver.module.css"
 import { useDispatch, useSelector } from 'react-redux';
-import { CompletedTask, CreateTask, ImportantTask, PendingTask } from '../../../Redux/TaskReducer/action';
 
 
 const text = <span>Title</span>;
@@ -11,13 +10,6 @@ const text = <span>Title</span>;
 const buttonWidth = 80;
 const PopOver = ({id}) => {
 
-  const {all,open,important} = useSelector((store)=>{
-      return {
-        open: store.TaskReducer.open,
-        all: store.TaskReducer.all,
-        important: store.TaskReducer.important,
-      }
-  })
 
 
 
@@ -25,36 +17,20 @@ const PopOver = ({id}) => {
   
 
   const HandleOpen = ()=>{
-    console.log(all)
-    all.map((e)=>{
-      if(e.id===id){
-        dispatch(CreateTask({...e,status:"open"}))
-      }
-    })
+    
+    
   }
   const HandlePending = ()=>{
 
-    all.map((e)=>{
-      if(e.id===id){
-        dispatch(PendingTask({...e,status:"pen."}))
-      }
-    })
+    
 
-    // dispatch(PendingTask())
+    
   }
   const HandleCompleted = ()=>{
-    all.map((e)=>{
-      if(e.id===id){
-        dispatch(CompletedTask({...e,status:"Done"}))
-      }
-    })
+    
   }
   const HandleImportant = ()=>{
-    all.map((e)=>{
-      if(e.id===id){
-        dispatch(ImportantTask({...e,status:"IMP"}))
-      }
-    })
+   
   }
   
   const content = (

@@ -9,9 +9,9 @@ import { ClockCircleOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Space } from 'antd';
 import BarChart from "../Common/Ant Design/BarChart";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateTask } from "../../Redux/TaskReducer/action";
 import Modal from "../Common/Ant Design/Modal";
 import ModalPop from "../Common/Ant Design/Modal";
+import { getTasks } from "../../Redux/TaskReducer/action";
 
 
 
@@ -19,22 +19,21 @@ const Tasks = () => {
 
     const dispatch = useDispatch();
 
+    const { tasks } = useSelector((store) => ({
+        tasks: store.TaskReducer.tasks
+    }));
     const [state,setState] = useState("All")
 
-    const {all,open,pending,completed,important} = useSelector((store)=>{
-        return {
-            all: store.TaskReducer.all,
-            open: store.TaskReducer.open,
-            pending: store.TaskReducer.pending,
-            completed: store.TaskReducer.completed,
-            important: store.TaskReducer.important,
-        }
-    })
+   
 
 
     const CreateTaskButn = ()=>{
-        dispatch(CreateTask())
+        
     }
+
+    useEffect(()=>{
+        dispatch(getTasks());
+    },[])
 
 
   return (
@@ -57,19 +56,19 @@ const Tasks = () => {
             <option value=""></option>
         </select>
         <div>
-            <Badge count={all.length} size="large" style={{fontSize:"10px",backgroundColor:"#6366F1"}}>
+            <Badge count={10} size="large" style={{fontSize:"10px",backgroundColor:"#6366F1"}}>
                 <button id={style.B1} onClick={()=>setState("ALL")}>All Task</button>
             </Badge>
-            <Badge count={open.length} size="large" style={{fontSize:"10px",backgroundColor:"rgb(0, 183, 255)"}}>
+            <Badge count={11} size="large" style={{fontSize:"10px",backgroundColor:"rgb(0, 183, 255)"}}>
                 <button id={style.B2} onClick={()=>setState("OPEN")} ><MdOutlineNoteAlt style={{marginTop:"-4px",fontSize:"18px"}}/>Open Task</button>
             </Badge>
-            <Badge count={pending.length} size="large" style={{fontSize:"10px",backgroundColor:"rgb(255, 200, 0)"}}>
+            <Badge count={120} size="large" style={{fontSize:"10px",backgroundColor:"rgb(255, 200, 0)"}}>
                 <button id={style.B3} onClick={()=>setState("PENDING")} ><MdOutlineStickyNote2 style={{marginTop:"-4px",fontSize:"18px"}}/> Pending Task</button>
             </Badge>
-            <Badge count={completed.length} size="large" style={{fontSize:"10px",backgroundColor:"#22CC5E"}}>
+            <Badge count={89} size="large" style={{fontSize:"10px",backgroundColor:"#22CC5E"}}>
                 <button id={style.B4} onClick={()=>setState("COMPLETED")} ><MdOutlineTask style={{marginTop:"-4px",fontSize:"18px"}}/> Completed Task</button>
             </Badge>
-            <Badge count={important.length} size="large" style={{fontSize:"10px",backgroundColor:"#EF4444"}}>
+            <Badge count={829} size="large" style={{fontSize:"10px",backgroundColor:"#EF4444"}}>
                 <button id={style.B5} onClick={()=>setState("IMPORTANT")} ><LuFileWarning style={{marginTop:"-5px",fontSize:"16px"}}/> Important Task</button>
             </Badge>
         </div>
@@ -85,28 +84,8 @@ const Tasks = () => {
 
       <div id={style.T2}>
         {
-            state==="OPEN"?
-            open.map((e)=>{
-                return <TaskBox {...e}/>
-            })
-            :
-            state==="PENDING"?
-            pending.map((e)=>{
-                return <TaskBox {...e}/>
-            })
-            :
-            state==="COMPLETED"?
-            completed.map((e)=>{
-                return <TaskBox {...e}/>
-            })
-            :
-            state==="IMPORTANT"?
-            important.map((e)=>{
-                return <TaskBox {...e}/>
-            })
-            :
-            all.map((e)=>{
-                return <TaskBox {...e}/>
+            tasks?.map((e)=>{
+                return <TaskBox {...e} />
             })
         }
       </div>

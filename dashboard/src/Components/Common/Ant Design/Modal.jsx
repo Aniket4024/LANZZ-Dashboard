@@ -3,22 +3,13 @@ import  "../../../CSS/ModalPop.css"
 import { LuFilePlus2 } from "react-icons/lu";
 import { Button, Modal } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { CreateTask, ImportantTask } from '../../../Redux/TaskReducer/action';
 import { isDisabled, isVisible } from '@testing-library/user-event/dist/utils';
+import { createTask } from '../../../Redux/TaskReducer/action';
 
 
 
 
 const ModalPop = () => {
-
-    const {all,open,important} = useSelector((store)=>{
-        return {
-          open: store.TaskReducer.open,
-          all: store.TaskReducer.all,
-          important: store.TaskReducer.important,
-        }
-    })
-    
 
     const dispatch = useDispatch();
 
@@ -40,33 +31,26 @@ const ModalPop = () => {
     };
     const handleOk = (e) => {
 
-        
-
-        setIsModalOpen(false);
-
-        if(title.length===0){
-            e.target.disabled=false
-        }
-
         const d = new Date(); 
 
         const newTask={
-            id:open.length,
             title:title?title:"No Title",
             description:description?description:"No Description",
-            date:d.toString().split(" ")[1]+" "+d.toString().split(" ")[2]+", "+d.toString().split(" ")[3],
-            time: d.toString().split(" ")[4].split(":")[0]+":"+d.toString().split(" ")[4].split(":")[1],
+            // date:d.toString().split(" ")[1]+" "+d.toString().split(" ")[2]+", "+d.toString().split(" ")[3],
+            // time: d.toString().split(" ")[4].split(":")[0]+":"+d.toString().split(" ")[4].split(":")[1],
+            date:"Feb 29, 2024",
+            time:"00:12",
             status:Checked?"IMP" : "Open"
         }
 
         
-        if(Checked){
-            dispatch(ImportantTask(newTask))
-        }
-        else{
-            dispatch(CreateTask(newTask))
-        }
-        
+        dispatch(createTask(newTask))
+        setIsModalOpen(false);
+
+        // if(title.length===0){
+        //     e.target.disabled=false
+        // }
+
         setTitle("");
         setDescription("");
         setChecked(false)

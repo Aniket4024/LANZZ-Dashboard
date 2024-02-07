@@ -71,7 +71,6 @@
 .TaskBox>div:nth-child(2)>div:nth-child(2){
     font-weight: 700;
     height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: end;
+    text-align: end;
+    width: 10px;
 }

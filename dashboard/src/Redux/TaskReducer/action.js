@@ -1,17 +1,40 @@
-import {COMPLETED, IMPORTANT, OPEN, PENDING} from "../actionType"
+import axios from "axios"
+import { CREATE_TASK, GET_TASKS, UPDATE_TASK } from "../actionType"
 
-export const CreateTask =(data)=>(dispatch)=>{
-    dispatch({type:OPEN,payload:data})
+
+export const getTasks = ()=>(dispatch)=>{
+
+    axios.get("http://localhost:8080/tasks")
+    .then((res)=>{
+        dispatch({type:GET_TASKS,payload:res.data})
+    })
+    .catch((err)=>{
+        console.log("Data Not Found!")
+        console.log(err)
+    })
+
 }
 
-export const ImportantTask =(data)=>(dispatch)=>{
-    dispatch({type:IMPORTANT,payload:data})
+export const createTask = (data)=>(dispatch)=>{
+    axios.post("http://localhost:8080/tasks",data)
+    .then((res)=>{
+        dispatch({type:CREATE_TASK,payload:res.data})
+        // console.log(res.data)
+    })
+    .catch((err)=>{
+        console.log("Data Not Found!")
+        console.log(err)
+    })
 }
 
-export const PendingTask = (data)=>(dispatch)=>{
-    dispatch({type:PENDING,payload:data})
-}
-
-export const CompletedTask = (data)=>(dispatch)=>{
-    dispatch({type:COMPLETED,payload:data})
-}
+// export const updateTask = (data)=>(dispatch)=>{
+//     axios.patch(`http://localhost:8080/tasks/${data.id}`,data)
+//     .then((res)=>{
+//         dispatch({type:UPDATE_TASK,payload:res.data})
+//         // console.log(res.data)
+//     })
+//     .catch((err)=>{
+//         console.log("Data Not Found!")
+//         console.log(err)
+//     })
+// }
