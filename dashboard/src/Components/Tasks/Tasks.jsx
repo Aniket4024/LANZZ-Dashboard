@@ -22,7 +22,12 @@ const Tasks = () => {
     const { tasks } = useSelector((store) => ({
         tasks: store.TaskReducer.tasks
     }));
-    const [state,setState] = useState("All")
+    const [state,setState] = useState("All");
+    const [open,setOpen] = useState(0);
+    const [pending,setPending] = useState(0);
+    const [complete,setComplete] = useState(0);
+    const [IMP,setIMP] = useState(0);
+
 
    
 
@@ -33,7 +38,30 @@ const Tasks = () => {
 
     useEffect(()=>{
         dispatch(getTasks());
-    },[])
+        let openCount=0;
+        let pendingCount=0;
+        let completeCount=0;
+        let IMPCount=0;
+
+        tasks.map((el)=>{
+            if(el.status==="Open"){
+                openCount++;
+                setOpen(openCount)
+            }
+            if(el.status==="Pen!"){
+                pendingCount++;
+                setPending(pendingCount)
+            }
+            if(el.status==="Done"){
+                completeCount++;
+                setComplete(completeCount)
+            }
+            if(el.status==="IMP"){
+                IMPCount++;
+                setIMP(IMPCount)
+            }
+        })
+    },[tasks])
 
 
   return (
@@ -56,19 +84,19 @@ const Tasks = () => {
             <option value=""></option>
         </select>
         <div>
-            <Badge count={10} size="large" style={{fontSize:"10px",backgroundColor:"#6366F1"}}>
+            <Badge count={tasks.length} size="large" style={{fontSize:"10px",backgroundColor:"#6366F1"}}>
                 <button id={style.B1} onClick={()=>setState("ALL")}>All Task</button>
             </Badge>
-            <Badge count={11} size="large" style={{fontSize:"10px",backgroundColor:"rgb(0, 183, 255)"}}>
+            <Badge count={open} size="large" style={{fontSize:"10px",backgroundColor:"rgb(0, 183, 255)"}}>
                 <button id={style.B2} onClick={()=>setState("OPEN")} ><MdOutlineNoteAlt style={{marginTop:"-4px",fontSize:"18px"}}/>Open Task</button>
             </Badge>
-            <Badge count={120} size="large" style={{fontSize:"10px",backgroundColor:"rgb(255, 200, 0)"}}>
+            <Badge count={pending} size="large" style={{fontSize:"10px",backgroundColor:"rgb(255, 200, 0)"}}>
                 <button id={style.B3} onClick={()=>setState("PENDING")} ><MdOutlineStickyNote2 style={{marginTop:"-4px",fontSize:"18px"}}/> Pending Task</button>
             </Badge>
-            <Badge count={89} size="large" style={{fontSize:"10px",backgroundColor:"#22CC5E"}}>
+            <Badge count={complete} size="large" style={{fontSize:"10px",backgroundColor:"#22CC5E"}}>
                 <button id={style.B4} onClick={()=>setState("COMPLETED")} ><MdOutlineTask style={{marginTop:"-4px",fontSize:"18px"}}/> Completed Task</button>
             </Badge>
-            <Badge count={829} size="large" style={{fontSize:"10px",backgroundColor:"#EF4444"}}>
+            <Badge count={IMP} size="large" style={{fontSize:"10px",backgroundColor:"#EF4444"}}>
                 <button id={style.B5} onClick={()=>setState("IMPORTANT")} ><LuFileWarning style={{marginTop:"-5px",fontSize:"16px"}}/> Important Task</button>
             </Badge>
         </div>
@@ -84,6 +112,30 @@ const Tasks = () => {
 
       <div id={style.T2}>
         {
+            state==="OPEN"?
+            tasks?.map((e)=>{
+                if(e.status==="Open"){
+                    return <TaskBox {...e} />
+                }
+            }):
+            state==="PENDING"?
+            tasks?.map((e)=>{
+                if(e.status==="Pen!"){
+                    return <TaskBox {...e} />
+                }
+            }):
+            state==="COMPLETED"?
+            tasks?.map((e)=>{
+                if(e.status==="Done"){
+                    return <TaskBox {...e} />
+                }            
+            }):
+            state==="IMPORTANT"?
+            tasks?.map((e)=>{
+                if(e.status==="IMP"){
+                    return <TaskBox {...e} />
+                }              
+            }):
             tasks?.map((e)=>{
                 return <TaskBox {...e} />
             })

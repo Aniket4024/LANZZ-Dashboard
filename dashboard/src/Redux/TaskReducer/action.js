@@ -38,3 +38,8 @@ export const createTask = (data)=>(dispatch)=>{
 //         console.log(err)
 //     })
 // }
+
+
+export const deleteTask = (id)=>(dispatch)=>{
+    axios.delete(`http://localhost:8080/tasks/${id}`)
+}

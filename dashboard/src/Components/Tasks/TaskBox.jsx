@@ -3,8 +3,8 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import PopOver from "../Common/Ant Design/PopOver";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTask } from "../../Redux/TaskReducer/action";
 import { IoTrashOutline } from "react-icons/io5";
+import PopConform from "../Common/Ant Design/PopConform";
 
 
 
@@ -49,7 +49,7 @@ const TaskBox = ({id,title,description,date,time,status}) => {
     }
     const EnterDescription = (e)=>{
         
-     }
+    }
 
 
 
@@ -126,8 +126,8 @@ const TaskBox = ({id,title,description,date,time,status}) => {
                 {status}
             </div>
             <div>
-                <IoTrashOutline style={{margin:"50px auto 0px 20px",color:"red"}}/>
-                <PopOver id={id} style={{margin:"0px auto 0px 20px"}}/>
+                <PopConform id={id} />
+                <PopOver id={id}/> 
             </div>
         </div>
     </div>

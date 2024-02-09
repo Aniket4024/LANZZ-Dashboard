@@ -17,8 +17,7 @@ const PopOver = ({id}) => {
   
 
   const HandleOpen = ()=>{
-    
-    
+
   }
   const HandlePending = ()=>{
 
@@ -44,10 +43,10 @@ const PopOver = ({id}) => {
 
   return <ConfigProvider
     button={{
-      style: {
-        width: buttonWidth,
-        margin: 4,
-      },
+      // style: {
+      //   width: buttonWidth,
+      //   margin: 4,
+      // },
     }}
   >
     <div className="demo">
@@ -92,7 +91,7 @@ const PopOver = ({id}) => {
       >
 
         
-        <Popover placement="rightTop" content={content}>
+        <Popover placement="rightTop" content={content} style={{padding:"0px"}}>
           <HiOutlineDotsVertical/>
         </Popover>
 

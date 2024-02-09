@@ -70,7 +70,8 @@
 }
 .TaskBox>div:nth-child(2)>div:nth-child(2){
     font-weight: 700;
-    height: 80%;
-    text-align: end;
-    width: 10px;
+    height: 85%;
+    text-align: center;
+    width: 40px;
+    /* background-color: rgb(191, 191, 191); */
 }
